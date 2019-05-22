@@ -1,0 +1,20 @@
+[
+  {
+    "id_competition": 1,
+    "id_match": 1,
+    "local": "Stade Toulousain",
+    "visiteur": "Stade Français"
+  },
+  {
+    "id_competition": 1,
+    "id_match": 2,
+    "local": "Clermont",
+    "visiteur": "La Rochelle"
+  },
+  {
+    "id_competition": 1,
+    "id_match": 3,
+    "local": "Toulon",
+    "visiteur": "Castres"
+  }
+]

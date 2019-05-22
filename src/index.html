@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CV in blockchain</title>
+
+    <meta name="description" content="Dapps pour gérer les CV dans la blockchain">
+    <meta name="author" content="Frédéric Jansou">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			  <div id="navbarItem" class="collapse navbar-collapse">
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				  <li class="nav-item">
+					<a id="nav_moncv" class="nav-link active" href="#">Mon CV</a>
+				  </li>
+				  <li class="nav-item">
+					<a id="nav_addItem" class="nav-link" href="#">Ajouter un item</a>
+				  </li>
+					<li class="nav-item">
+						<a id="nav_viewAll"  class="nav-link disabled" href="#">Voir blockchain</a>
+					</li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0">
+				  <input id="search-value" class="form-control mr-sm-2" type="search" placeholder="Item Id to validate" aria-label="Search">
+				  <button id="search-button" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				</form>
+			  </div>
+			</nav>
+
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<!-- POUR METTRE LES MESSAGES -->
+			<div  id="msg_success_template" style="display: none;" class="alert alert-dismissable alert-success">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+					×
+				</button>
+				<p id="msg_success" class="text-center"></p>
+			</div>
+			<div  id="msg_info_template" style="display: none;" class="alert alert-dismissable alert-info">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+					×
+				</button>
+				<p id="msg_info" class="text-center"></p>
+			</div>
+			<div  id="msg_warning_template" style="display: none;" class="alert alert-dismissable alert-warning">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+					×
+				</button>
+				<p id="msg_warning" class="text-center"></p>
+			</div>
+			<div  id="msg_danger_template" style="display: none;" class="alert alert-dismissable alert-danger">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+					×
+				</button>
+				<p id="msg_danger" class="text-center"></p>
+			</div>
+
+			<!-- CONTENT -->
+			<h1 id="page_title">
+				Mon CV
+			</h1>
+			<p id="page_content">
+				<div  id="itemRow" class="row">
+
+				</div>
+
+
+
+				<form id="itemForm" style="display: none;">
+				<fieldset class="form-group">
+					<div class="row">
+					  <legend class="col-form-label col-sm-2 pt-0">Type</legend>
+					  <div class="col-sm-10">
+						<div class="form-check">
+						  <input class="form-check-input" type="radio" name="gridRadios" id="type" value="1" checked>
+						  <label class="form-check-label" for="type">
+							Dîplome
+						  </label>
+						</div>
+						<div class="form-check">
+						  <input class="form-check-input" type="radio" name="gridRadios" id="type" value="2">
+						  <label class="form-check-label" for="type">
+							Expérience
+						  </label>
+						</div>
+						<div class="form-check disabled">
+						  <input class="form-check-input" type="radio" name="gridRadios" id="type" value="3">
+						  <label class="form-check-label" for="type">
+							Certification
+						  </label>
+						</div>
+					  </div>
+					</div>
+				  </fieldset>
+				  <div class="form-group row">
+					<label for="nom" class="col-form-label col-sm-2 pt-0">Nom</label>
+					<div class="col-sm-10">
+						<input class="form-control" type="text" id="nom"></textarea>
+					</div>
+				  </div>
+				  <div class="form-group row">
+					<label for="description" class="col-form-label col-sm-2 pt-0">Description</label>
+					<div class="col-sm-10">
+						<textarea class="form-control" id="description" rows="3"></textarea>
+					</div>
+				  </div>
+				  <div class="form-group row">
+					<label for="url" class="col-form-label col-sm-2 pt-0">URL image</label>
+					<div class="col-sm-10">
+						<input class="form-control" type="text" id="url"></input>
+						<img id="url_preview" alt="" data-src="holder.js/140x140" class="img-rounded img-center" style="width: 10%;" src="" data-holder-rendered="true">
+
+					</div>
+				  </div>
+
+				  <button id="item_submit" type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</p>
+			<!--
+			<p>
+				<a class="btn" href="#">View details »</a>
+			</p>
+			-->
+		</div>
+	</div>
+
+	<footer class="row">
+		<div class="col-md-12">
+			<p id="accountAddress" class="text-center"></p>
+			<p class="text-center">
+				Test sur blockchain Ethereum.
+			</p>
+		</div>
+	</footer>
+</div>
+
+
+    <div id="itemTemplate" style="display: none;">
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card">
+          <div class="card-header">
+            ?
+          </div>
+		  <span class="badge badge-pill badge-success"></span>
+          <div class="card-body">
+            <img alt="140x140" data-src="holder.js/140x140" class="img-rounded img-center" style="width: 100%;" src="https://url.jpeg" data-holder-rendered="true">
+            <br/><br/>
+            <strong>Description</strong>: <span class="item-description">?</span><br/>
+            <strong>Type</strong>: <span class="item-type">?</span><br/>
+			<div class="item-adresse-section" style="display: none;">
+				<strong>Adresse</strong>: <small> <em class="item-adresse"></em></small> <br/><br/>
+			</div>
+            <strong>Validé par</strong>: <small> <em class="item-validation"></em></small><br/>
+
+			<div class="item-bouton-section" style="display: none;">
+				<button class="btn btn-default btn-validate" type="button" data-id="0">Validate</button>
+			</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+	<script src="js/web3.min.js"></script>
+	<script src="js/truffle-contract.js"></script>
+	<script src="js/app.js"></script>
+  </body>
+</html>
